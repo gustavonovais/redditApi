@@ -39,22 +39,18 @@ public class TimeLineActivity extends AppCompatActivity {
     }
 
     private void listPosts() {
-        ManagerRequest<TimeLine> mApi = new ManagerRequest<>(this);
-        try {
-            mApi.listPosts(new Callback<TimeLine>() {
-                @Override
-                public void onResponse(Call<TimeLine> call, Response<TimeLine> response) {
-                    loadTimeLine(response.body());
-                }
+        ManagerRequest<TimeLine> mApi = new ManagerRequest<>();
+        mApi.listPosts(new Callback<TimeLine>() {
+            @Override
+            public void onResponse(Call<TimeLine> call, Response<TimeLine> response) {
+                loadTimeLine(response.body());
+            }
 
-                @Override
-                public void onFailure(Call<TimeLine> call, Throwable t) {
-                    Toast.makeText(TimeLineActivity.this, R.string.not_conection, Toast.LENGTH_LONG).show();
-                }
-            });
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            @Override
+            public void onFailure(Call<TimeLine> call, Throwable t) {
+                Toast.makeText(TimeLineActivity.this, R.string.not_conection, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void loadTimeLine(TimeLine timeLine) {

@@ -29,10 +29,10 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Children children = childrenList.get(position);
 
-        holder.txtTitle.setText(children.data.getTitle());
-        holder.txtDecription.setText(children.data.getSelftext());
+        holder.txtTitle.setText(children.getData().getTitle());
+        holder.txtDecription.setText(children.getData().getSelftext());
 
-        Uri uri = Uri.parse(children.data.getThumbnail());
+        Uri uri = Uri.parse(children.getData() .getThumbnail());
         holder.img.setImageURI(uri);
     }
 

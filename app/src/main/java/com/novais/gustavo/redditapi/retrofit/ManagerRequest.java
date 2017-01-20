@@ -13,9 +13,8 @@ public class ManagerRequest<T> {
 
     private final RequestsEndPoints.EndPoints mApi;
 
-    public ManagerRequest(Context mContext) {
-        Context context = mContext;
-        DataRequest dataRequest = new DataRequest(mContext);
+    public ManagerRequest() {
+        DataRequest dataRequest = new DataRequest();
         mApi = dataRequest.getApi();
     }
 
