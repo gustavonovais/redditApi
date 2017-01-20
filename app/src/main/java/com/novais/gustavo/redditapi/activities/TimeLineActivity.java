@@ -2,7 +2,6 @@ package com.novais.gustavo.redditapi.activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,7 +24,6 @@ import retrofit2.Response;
 public class TimeLineActivity extends AppCompatActivity {
 
     private ActivityTimeLineBinding binding;
-    private TimeLineAdapter timeLineAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +57,8 @@ public class TimeLineActivity extends AppCompatActivity {
         }
     }
 
-    public void loadTimeLine(TimeLine timeLine) {
-        timeLineAdapter = new TimeLineAdapter(this, timeLine.data.children);
+    private void loadTimeLine(TimeLine timeLine) {
+        TimeLineAdapter timeLineAdapter = new TimeLineAdapter(timeLine.getData().getChildren());
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         binding.recyclerView.setLayoutManager(mLayoutManager);

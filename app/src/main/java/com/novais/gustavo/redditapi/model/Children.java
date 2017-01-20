@@ -1,12 +1,28 @@
 package com.novais.gustavo.redditapi.model;
 
-import java.util.ArrayList;
-
 /**
  * Created by Gustavo on 20/01/17.
  */
 
 public class Children {
-    public String kind;
-    public Data data;
+    private String kind;
+    private Data data;
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+
 }

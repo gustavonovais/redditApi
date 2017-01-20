@@ -7,8 +7,41 @@ import java.util.ArrayList;
  */
 
 public class DataX {
-    public String modhash;
-    public String after;
-    public Object before;
-    public ArrayList<Children> children;
+    private  String modhash;
+    private String after;
+    private Object before;
+    private ArrayList<Children> children;
+
+    public ArrayList<Children> getChildren() {
+        return children;
+    }
+
+    public void setChildren(ArrayList<Children> children) {
+        this.children = children;
+    }
+
+    public String getModhash() {
+        return modhash;
+    }
+
+    public void setModhash(String modhash) {
+        this.modhash = modhash;
+    }
+
+    public String getAfter() {
+        return after;
+    }
+
+    public void setAfter(String after) {
+        this.after = after;
+    }
+
+    public Object getBefore() {
+        return before;
+    }
+
+    public void setBefore(Object before) {
+        this.before = before;
+    }
+
 }

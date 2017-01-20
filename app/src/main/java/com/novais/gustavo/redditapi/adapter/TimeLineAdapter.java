@@ -1,25 +1,16 @@
 package com.novais.gustavo.redditapi.adapter;
 
-import android.app.Activity;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.novais.gustavo.redditapi.R;
-import com.novais.gustavo.redditapi.databinding.RowBinding;
 import com.novais.gustavo.redditapi.model.Children;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,23 +19,20 @@ import java.util.List;
 
 public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyViewHolder> {
 
-    private List<Children> childrenList;
-    private Activity activity;
-    private RowBinding rowBinding;
+    private final List<Children> childrenList;
 
-    public TimeLineAdapter(Activity activity, List<Children> cadastroList) {
-        this.childrenList = cadastroList;
-        this.activity = activity;
+    public TimeLineAdapter(List<Children> childrenList) {
+        this.childrenList = childrenList;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Children children = childrenList.get(position);
 
-        holder.txtTitle.setText(children.data.title);
-        holder.txtDecription.setText(children.data.selftext);
+        holder.txtTitle.setText(children.data.getTitle());
+        holder.txtDecription.setText(children.data.getSelftext());
 
-        Uri uri = Uri.parse(children.data.thumbnail);
+        Uri uri = Uri.parse(children.data.getThumbnail());
         holder.img.setImageURI(uri);
     }
 
@@ -60,9 +48,9 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtTitle;
-        public SimpleDraweeView img;
-        public TextView txtDecription;
+        public final TextView txtTitle;
+        public final SimpleDraweeView img;
+        public final TextView txtDecription;
 
         public MyViewHolder(View view) {
             super(view);

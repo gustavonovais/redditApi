@@ -1,21 +1,16 @@
 package com.novais.gustavo.redditapi.retrofit;
 
-import android.content.Context;
-
 import com.novais.gustavo.redditapi.BuildConfig;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DataRequest {
+class DataRequest {
 
-    Context context;
-    Retrofit retrofit;
-    RequestsEndPoints.EndPoints api;
+    private final Retrofit retrofit;
+    private final RequestsEndPoints.EndPoints api;
 
-    public DataRequest(Context context) {
-        this.context = context;
-
+    public DataRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())

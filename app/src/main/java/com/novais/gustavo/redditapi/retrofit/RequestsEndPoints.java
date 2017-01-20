@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 
 public class RequestsEndPoints {
 
-    public static final String URI = "/r/Android/new/.json";
+    private static final String URI = "/r/Android/new/.json";
 
     public interface EndPoints {
 
