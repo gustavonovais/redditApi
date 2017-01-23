@@ -15,8 +15,6 @@ import com.novais.gustavo.redditapi.databinding.ActivityTimeLineBinding;
 import com.novais.gustavo.redditapi.model.TimeLine;
 import com.novais.gustavo.redditapi.retrofit.ManagerRequest;
 
-import org.json.JSONException;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

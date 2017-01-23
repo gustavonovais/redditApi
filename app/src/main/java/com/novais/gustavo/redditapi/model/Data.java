@@ -1,12 +1,13 @@
 package com.novais.gustavo.redditapi.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Gustavo on 20/01/17.
  */
 
-public class Data {
+public class Data implements Serializable{
     private boolean contest_mode;
     private Object banned_by;
     private String domain;
