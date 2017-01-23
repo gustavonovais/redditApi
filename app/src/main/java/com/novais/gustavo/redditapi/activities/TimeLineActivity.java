@@ -58,6 +58,7 @@ public class TimeLineActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(mLayoutManager);
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setAdapter(timeLineAdapter);
+        binding.recyclerView.setNestedScrollingEnabled(false);
         binding.recyclerView.getAdapter().notifyDataSetChanged();
     }
 }

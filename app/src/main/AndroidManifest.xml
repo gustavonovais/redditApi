@@ -24,9 +24,9 @@
         </activity>
 
         <activity android:name=".activities.DetailPostActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.novais.gustavo.redditapi.activities.TimeLineActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.novais.gustavo.redditapi.activities.TimeLineActivity" />
         </activity>
 
     </application>
