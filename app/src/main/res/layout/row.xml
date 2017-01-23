@@ -10,6 +10,10 @@
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:text="Texto 123 ABC"
             android:layout_marginLeft="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin" />
@@ -22,6 +26,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/txtTitle"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:text="Texto 123 ABC"
             android:layout_margin="@dimen/default_margin" />
 
 
@@ -29,8 +37,8 @@
             android:layout_margin="@dimen/default_margin"
             android:id="@+id/img"
             fresco:placeholderImage="@drawable/my_drawable"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />

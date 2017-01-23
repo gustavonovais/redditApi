@@ -32,7 +32,7 @@ public class Data {
     private boolean hidden;
     private String thumbnail;
     private String subreddit_id;
-    private boolean edited;
+    private Object edited;
     private Object link_flair_css_class;
     private String author_flair_css_class;
     private int downs;
@@ -251,10 +251,6 @@ public class Data {
         this.subreddit_id = subreddit_id;
     }
 
-    public boolean isEdited() {
-        return edited;
-    }
-
     public void setEdited(boolean edited) {
         this.edited = edited;
     }
@@ -459,5 +455,12 @@ public class Data {
         this.mod_reports = mod_reports;
     }
 
+    public Object getEdited() {
+        return edited;
+    }
+
+    public void setEdited(Object edited) {
+        this.edited = edited;
+    }
 
 }
