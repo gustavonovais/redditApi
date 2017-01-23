@@ -1,14 +1,17 @@
 package com.novais.gustavo.redditapi.adapter;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.novais.gustavo.redditapi.R;
+import com.novais.gustavo.redditapi.activities.DetailPostActivity;
 import com.novais.gustavo.redditapi.model.Children;
 
 import java.util.List;
@@ -17,7 +20,7 @@ import java.util.List;
  * Created by gustavo on 21/09/2016.
  */
 
-public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyViewHolder> {
+public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyViewHolder> implements View.OnClickListener {
 
     private final List<Children> childrenList;
 
@@ -31,6 +34,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
 
         holder.txtTitle.setText(children.getData().getTitle());
         holder.txtDecription.setText(children.getData().getSelftext());
+        holder.itemView.setOnClickListener(this);
 
         Uri uri = Uri.parse(children.getData() .getThumbnail());
         holder.img.setImageURI(uri);
@@ -45,6 +49,13 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
     @Override
     public int getItemCount() {
         return childrenList.size();
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(view.getContext(), DetailPostActivity.class);
+        view.getContext().startActivity(intent);
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
