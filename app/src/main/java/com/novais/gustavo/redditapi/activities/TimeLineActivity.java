@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,21 +14,20 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.novais.gustavo.redditapi.R;
 import com.novais.gustavo.redditapi.adapter.TimeLineAdapter;
 import com.novais.gustavo.redditapi.databinding.ActivityTimeLineBinding;
-import com.novais.gustavo.redditapi.model.Children;
 import com.novais.gustavo.redditapi.model.TimeLine;
 import com.novais.gustavo.redditapi.retrofit.ManagerRequest;
-
-import java.sql.Time;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.support.v7.widget.RecyclerView.*;
+import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private ActivityTimeLineBinding binding;
+    private TimeLine timeLine;
+    private LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +45,6 @@ public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshL
         configSwipe();
     }
 
-    private TimeLine timeLine;
-
     private void loadTimeLine(TimeLine timeLine) {
         this.timeLine = timeLine;
         TimeLineAdapter timeLineAdapter = new TimeLineAdapter(this.timeLine.getData().getChildren());
@@ -56,8 +52,6 @@ public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshL
         binding.recyclerView.setAdapter(timeLineAdapter);
         binding.recyclerView.getAdapter().notifyDataSetChanged();
     }
-
-    LinearLayoutManager layoutManager;
 
     private void configRecycleView() {
         layoutManager = new LinearLayoutManager(this);
@@ -67,7 +61,7 @@ public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshL
         binding.recyclerView.addOnScrollListener(recyclerViewOnScrollListener);
     }
 
-    public void configSwipe() {
+    private void configSwipe() {
         binding.swipeRefreshLayout.setOnRefreshListener(this);
     }
 
@@ -76,7 +70,6 @@ public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshL
         listPosts();
         binding.swipeRefreshLayout.setRefreshing(false);
     }
-
 
     private void listPosts() {
         ManagerRequest<TimeLine> mApi = new ManagerRequest<>();
@@ -114,7 +107,7 @@ public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshL
         }, after);
     }
 
-    private OnScrollListener recyclerViewOnScrollListener = new OnScrollListener() {
+    private final OnScrollListener recyclerViewOnScrollListener = new OnScrollListener() {
         private boolean loading = true;
         int pastVisiblesItems, visibleItemCount, totalItemCount;
 

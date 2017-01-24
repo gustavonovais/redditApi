@@ -8,7 +8,6 @@
         android:id="@+id/cardview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
         app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
@@ -26,7 +25,6 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/primaryText"
-                android:text="Texto 123 ABC"
                 android:layout_marginLeft="@dimen/default_margin"
                 android:layout_toLeftOf="@+id/img"
                 android:layout_marginTop="@dimen/default_margin"
@@ -43,7 +41,6 @@
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="@color/secondaryText"
-                android:text="Texto 123 ABC"
                 android:layout_toLeftOf="@+id/img"
                 android:layout_margin="@dimen/default_margin" />
 

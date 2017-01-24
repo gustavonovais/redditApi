@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.novais.gustavo.redditapi", appContext.getPackageName());
+        assertEquals("com.novais.gustavo.redditapi.debug", appContext.getPackageName());
     }
 }

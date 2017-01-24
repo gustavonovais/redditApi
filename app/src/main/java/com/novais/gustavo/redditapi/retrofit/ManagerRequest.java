@@ -1,14 +1,9 @@
 package com.novais.gustavo.redditapi.retrofit;
 
-import android.content.Context;
-
 import com.novais.gustavo.redditapi.BuildConfig;
 import com.novais.gustavo.redditapi.model.ParamKey;
 import com.novais.gustavo.redditapi.model.TimeLine;
 
-import org.json.JSONException;
-
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 

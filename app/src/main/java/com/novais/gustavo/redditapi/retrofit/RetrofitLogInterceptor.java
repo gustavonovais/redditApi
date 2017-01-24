@@ -20,24 +20,19 @@ import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.BufferedSource;
 
-public class RetrofitLogInterceptor implements Interceptor {
+class RetrofitLogInterceptor implements Interceptor {
 
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
     private boolean enableLog = false;
 
 
-    public RetrofitLogInterceptor(boolean enableLog) {
-        this.enableLog = enableLog;
+    public RetrofitLogInterceptor() {
+        this.enableLog = true;
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException, NullPointerException {
-        try {
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         Request request = chain.request();
         if(enableLog) {
             Log.d("DEBUG_PB", "**************************");
@@ -88,6 +83,7 @@ public class RetrofitLogInterceptor implements Interceptor {
                 Log.d("DEBUG_PB", "--> END " + request.method() + " (encoded body omitted)");
             } else {
                 Buffer buffer = new Buffer();
+                //noinspection ConstantConditions
                 requestBody.writeTo(buffer);
 
                 Charset charset = UTF8;
@@ -121,10 +117,7 @@ public class RetrofitLogInterceptor implements Interceptor {
 
             ResponseBody responseBody = response.body();
             long contentLength = responseBody.contentLength();
-            String bodySize = contentLength != -1 ? contentLength + "-byte" : "unknown-length";
-            Log.d("DEBUG", "<-- " + response.code() + ' ' + response.message() + ' '
-                    + response.request().url() + " (" + tookMs + "ms" + (!true ? ", "
-                    + bodySize + " body" : "") + ')');
+            Log.d("DEBUG", "<-- " + response.code() + ' ' + response.message() + ' ' + response.request().url() + " (" + tookMs + "ms" + "" + ')');
 
             Headers headers = response.headers();
             for (int i = 0, count = headers.size(); i < count; i++) {

@@ -1,7 +1,9 @@
 package com.novais.gustavo.redditapi.adapter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,13 +20,15 @@ import com.novais.gustavo.redditapi.model.ParamKey;
 
 import java.util.List;
 
+import static android.app.ActivityOptions.*;
+
 /**
  * Created by gustavo on 21/09/2016.
  */
 
 public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyViewHolder>  {
 
-    public final List<Children> childrenList;
+    private final List<Children> childrenList;
 
     public TimeLineAdapter(List<Children> childrenList) {
         this.childrenList = childrenList;
@@ -84,7 +88,11 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
             bundle.putSerializable(ParamKey.CHILDREN, childrenList.get(postition));
             intent.putExtras(bundle);
 
-            v.getContext().startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.getContext().startActivity(intent, makeSceneTransitionAnimation((Activity) v.getContext()).toBundle());
+            } else {
+                v.getContext().startActivity(intent);
+            }
         }
     }
 

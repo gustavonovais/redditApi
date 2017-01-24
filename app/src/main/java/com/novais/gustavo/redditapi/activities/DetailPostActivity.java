@@ -1,20 +1,15 @@
 package com.novais.gustavo.redditapi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.novais.gustavo.redditapi.BuildConfig;
 import com.novais.gustavo.redditapi.R;
 import com.novais.gustavo.redditapi.databinding.ActivityDetailPostBinding;
-import com.novais.gustavo.redditapi.databinding.ActivityTimeLineBinding;
 import com.novais.gustavo.redditapi.model.Children;
 import com.novais.gustavo.redditapi.model.ParamKey;
 
@@ -34,20 +29,20 @@ public class DetailPostActivity extends AppCompatActivity implements View.OnClic
         configText();
     }
 
-    public void configTitle() {
+    private void configTitle() {
         if (children != null && children.getData() != null) {
             binding.txtTitle.setText(children.getData().getTitle());
         }
     }
 
-    public void configLink() {
+    private void configLink() {
         if (children != null && children.getData() != null) {
             binding.txtLink.setText(children.getData().getUrl());
         }
         binding.txtLink.setOnClickListener(this);
     }
 
-    public void configText() {
+    private void configText() {
         if (children != null && children.getData() != null) {
             if (!children.getData().getSelftext().isEmpty()) {
                 binding.txtSelfText.setVisibility(View.VISIBLE);
@@ -68,7 +63,7 @@ public class DetailPostActivity extends AppCompatActivity implements View.OnClic
         return super.onOptionsItemSelected(item);
     }
 
-    public Children getChildren() {
+    private Children getChildren() {
         return (Children) getIntent().getSerializableExtra(ParamKey.CHILDREN);
     }
 
@@ -83,7 +78,7 @@ public class DetailPostActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void linkClick() {
+    private void linkClick() {
         if (children != null && children.getData() != null) {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(children.getData().getUrl()));

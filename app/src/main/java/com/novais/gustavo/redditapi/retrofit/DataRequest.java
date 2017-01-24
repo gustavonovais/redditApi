@@ -4,9 +4,6 @@ import com.novais.gustavo.redditapi.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
-
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,13 +14,11 @@ class DataRequest {
     private final RequestsEndPoints.EndPoints api;
 
     public DataRequest() {
-        Retrofit retrofit = new Retrofit.Builder()
+        this.retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.ENDPOINT)
                 .client(getOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        this.retrofit = retrofit;
         api = this.retrofit.create(RequestsEndPoints.EndPoints.class);
     }
 
@@ -33,11 +28,9 @@ class DataRequest {
 
             builder.readTimeout(60, TimeUnit.SECONDS);
             builder.connectTimeout(60, TimeUnit.SECONDS);
-            builder.interceptors().add(new RetrofitLogInterceptor(true));
+            builder.interceptors().add(new RetrofitLogInterceptor());
 
-            OkHttpClient okHttpClient = builder.build();
-
-            return okHttpClient;
+            return builder.build();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
