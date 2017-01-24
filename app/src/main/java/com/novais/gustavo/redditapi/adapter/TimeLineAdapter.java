@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.novais.gustavo.redditapi.R;
 import com.novais.gustavo.redditapi.activities.DetailPostActivity;
@@ -36,8 +37,17 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
         holder.txtTitle.setText(children.getData().getTitle());
         holder.txtDecription.setText(children.getData().getSelftext());
 
+        configImg(holder, children);
+
+    }
+
+    private void configImg(MyViewHolder holder, Children children) {
         Uri uri = Uri.parse(children.getData() .getThumbnail());
         holder.img.setImageURI(uri);
+
+        RoundingParams roundingParams = RoundingParams.fromCornersRadius(5f);
+        roundingParams.setRoundAsCircle(true);
+        holder.img.getHierarchy().setRoundingParams(roundingParams);
     }
 
     @Override
@@ -62,6 +72,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
             txtDecription = (TextView) view.findViewById(R.id.txtDescription);
             img = (SimpleDraweeView) view.findViewById(R.id.img);
             view.setOnClickListener(this);
+
         }
 
         @Override

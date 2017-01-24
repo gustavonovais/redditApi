@@ -108,6 +108,7 @@ public class TimeLineActivity extends AppCompatActivity implements SwipeRefreshL
 
             @Override
             public void onFailure(Call<TimeLine> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
                 Toast.makeText(TimeLineActivity.this, R.string.not_conection, Toast.LENGTH_LONG).show();
             }
         }, after);

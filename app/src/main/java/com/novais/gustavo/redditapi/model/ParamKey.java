@@ -6,7 +6,7 @@ package com.novais.gustavo.redditapi.model;
 
 public class ParamKey {
     public static final String CHILDREN = "CHILDREN";
-    public static final String LIMIT = "LIMIT";
-    public static final String AFTER = "AFTER";
+    public static final String LIMIT = "limit";
+    public static final String AFTER = "after";
 
 }

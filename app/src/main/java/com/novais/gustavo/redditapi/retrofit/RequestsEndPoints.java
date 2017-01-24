@@ -13,11 +13,11 @@ import retrofit2.http.QueryMap;
 
 public class RequestsEndPoints {
 
-    private static final String URI = "/r/Android/new/.json?limit=";
+    private static final String URI = "/r/Android/new/.json?";
 
     public interface EndPoints {
 
-        @POST(URI + BuildConfig.LIMIT)
+        @POST(URI + "limit=" + BuildConfig.LIMIT)
         Call<TimeLine> listPosts();
 
         @POST(URI)
