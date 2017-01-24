@@ -13,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.novais.gustavo.redditapi.R;
 import com.novais.gustavo.redditapi.activities.DetailPostActivity;
 import com.novais.gustavo.redditapi.model.Children;
+import com.novais.gustavo.redditapi.model.ParamKey;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ import java.util.List;
 
 public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyViewHolder>  {
 
-    private final List<Children> childrenList;
+    public final List<Children> childrenList;
 
     public TimeLineAdapter(List<Children> childrenList) {
         this.childrenList = childrenList;
@@ -69,7 +70,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.MyView
 
             Intent intent = new Intent(v.getContext(), DetailPostActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("Children", childrenList.get(postition));
+            bundle.putSerializable(ParamKey.CHILDREN, childrenList.get(postition));
             intent.putExtras(bundle);
 
             v.getContext().startActivity(intent);

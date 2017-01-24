@@ -24,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textColor="@color/primaryText"
                 android:text="Texto 123 ABC"
                 android:layout_marginLeft="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
@@ -41,7 +41,7 @@
                 android:layout_below="@+id/txtTitle"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                android:textColor="@android:color/black"
+                android:textColor="@color/secondaryText"
                 android:text="Texto 123 ABC"
                 android:layout_margin="@dimen/default_margin" />
 

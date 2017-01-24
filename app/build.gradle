@@ -16,6 +16,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "ENDPOINT", "\"https://www.reddit.com/\"";
+            buildConfigField "String", "LIMIT", "\"30\"";
         }
 
         debug {
@@ -23,6 +24,7 @@ android {
             applicationIdSuffix ".debug"
             versionNameSuffix '-DEBUG'
             buildConfigField "String", "ENDPOINT", "\"https://www.reddit.com/\"";
+            buildConfigField "String", "LIMIT", "\"30\"";
         }
     }
 

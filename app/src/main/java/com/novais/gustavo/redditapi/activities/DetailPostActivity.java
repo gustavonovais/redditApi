@@ -16,6 +16,7 @@ import com.novais.gustavo.redditapi.R;
 import com.novais.gustavo.redditapi.databinding.ActivityDetailPostBinding;
 import com.novais.gustavo.redditapi.databinding.ActivityTimeLineBinding;
 import com.novais.gustavo.redditapi.model.Children;
+import com.novais.gustavo.redditapi.model.ParamKey;
 
 public class DetailPostActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -68,7 +69,7 @@ public class DetailPostActivity extends AppCompatActivity implements View.OnClic
     }
 
     public Children getChildren() {
-        return (Children) getIntent().getSerializableExtra("Children");
+        return (Children) getIntent().getSerializableExtra(ParamKey.CHILDREN);
     }
 
     @Override
